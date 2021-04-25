@@ -2,12 +2,13 @@ from django.shortcuts import render, redirect
 
 # Create your views here.
 
-from .models import Post
+from .models import Post, Comments
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth import login as auth_login
-from .forms import SignUpForm
+from .forms import SignUpForm, ReplyForm
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_object_or_404 
 
 class BlogListView(ListView):
 	model=Post
@@ -42,3 +43,17 @@ def signup(request):
 	else:
 		form=SignUpForm()
 	return render(request, 'signup.html', {'form':form})
+
+@login_required
+def comments(request, pk):
+    post = Post.objects.get(pk=pk)
+    if request.method == 'POST':
+        form = ReplyForm(request.POST)
+        if form.is_valid():
+        	comment=form.save(commit=False)
+        	comment.blog_post=post
+        	comment=form.save()
+        	return redirect('post_detail', pk=pk)
+    else:
+        form = ReplyForm()
+    return render(request, 'reply.html', { 'form': form, 'post':post})

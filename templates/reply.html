@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+  <li >Post a reply</li>
+
+
+{% block content %}
+
+  <form method="post" class="mb-4" novalidate>
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit" >Post a reply</button>
+  </form>
+
+  {% for reply in blog_post.post.all %}
+   
+            <strong >{{post.author.username }}</strong>
+            <p>{{ reply }}</p>
+     
+  {% endfor %}
+
+{% endblock %}

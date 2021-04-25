@@ -13,3 +13,13 @@ class Post(models.Model):
 
 	def get_absolute_url(self):
 		return reverse('post_detail', args=[str(self.id)])
+
+class Comments(models.Model):
+	blog_post=models.ForeignKey('Post', related_name='post', on_delete=models.CASCADE)
+	reply=models.CharField(max_length=200)
+
+	def __str__(self):
+		return self.reply
+
+
+
