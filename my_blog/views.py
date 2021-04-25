@@ -1,0 +1,44 @@
+from django.shortcuts import render, redirect
+
+# Create your views here.
+
+from .models import Post
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
+from django.contrib.auth import login as auth_login
+from .forms import SignUpForm
+from django.contrib.auth.decorators import login_required
+
+class BlogListView(ListView):
+	model=Post
+	template_name='home.html'
+
+class BlogDetailView(DetailView):
+	model=Post
+	template_name = 'post_detail.html'
+
+class BlogCreateView(CreateView):
+	model= Post
+	template_name='post_new.html'
+	fields=['title', 'author', 'body']
+
+class BlogUpdateView(UpdateView):
+	model=Post
+	template_name='post_edit.html'
+	fields=['title', 'body']
+
+class BlogDeleteView(DeleteView):
+	model=Post
+	template_name='post_delete.html'
+	success_url=reverse_lazy('home')
+	
+def signup(request):
+	if request.method == 'POST':
+		form=SignUpForm(request.POST)
+		if form.is_valid():
+			user=form.save()
+			auth_login(request, user)
+			return redirect('home')
+	else:
+		form=SignUpForm()
+	return render(request, 'signup.html', {'form':form})
