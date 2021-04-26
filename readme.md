@@ -11,43 +11,51 @@ This is a CRUD blog created with django. The post in the blog can created, read,
  - Django
  (The requirements.txt file gives a more detailed description)
 
+##Tests
+
+To run test on the code run these commands
+
+1.
+Clone the repostiory:
+```
+https://github.com/Chinwendu20/crud-django-blog
+
+```
+2.
+Install requirements:
+
+```
+pip install -r requirements.txt
+
+```
+
+3. Run the command:
+
+```
+python manage.py tests
+
+```
 ## Operations
 
-- **Create post**
-![Screenshot_20210426-082913_1](Screenshot_20210426-082913_1.png)
+- Create post
 
-- **Read post**
+- Read post
 
-![Screenshot_20210426-082905_1](Screenshot_20210426-082905_1.png)
+- Update post
 
-- **Update post**
+- Delete post
 
-![Screenshot_20210426-100035_1](Screenshot_20210426-100035_1.png)
+- Login
 
-- **Delete post**
+- Sign up
 
-![areyousuredelete](areyousuredelete.png)
+- Password reset and change
 
-- **Login**
-![Login](Login.png)
+-Login protected  comment view.
 
-- **Sign up**
-![sign_up](sign_up.png)
+**Deployment.**
 
-- **Password reset and change**
-
-**Password change**
-![changepassword](changepassword.png)
-
-**Password reset**
-
-![email_forgot_password](email_forgot_password.png)
-
--**Login protected  comment view.**
-
-![reply](reply.png)
-
-**Link to live site**
+Django application was deployed on Heroku. Here is the live site
 
 [ihunnaya-blog.herokuapp.com](ihunnaya-blog.herokuapp.com)
 
