@@ -11,7 +11,7 @@
     <button type="submit" >Post a reply</button>
   </form>
 
-  {% for reply in blog_post.post.all %}
+  {% for reply in post.post.all %}
    
             <strong >{{post.author.username }}</strong>
             <p>{{ reply }}</p>
