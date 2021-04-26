@@ -11,7 +11,7 @@ This is a CRUD blog created with django. The post in the blog can created, read,
  - Django
  (The requirements.txt file gives a more detailed description)
 
-##Tests
+## Tests
 
 To run test on the code run these commands
 
